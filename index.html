@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CthulhuTracker — Rastreador de Iniciativa</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ===== TELA INICIAL ===== -->
+    <div id="screen-home" class="screen active">
+        <div class="home-container">
+            <div class="home-header">
+                <h1 class="logo-title">CthulhuTracker</h1>
+                <p class="logo-subtitle">Rastreador de Iniciativa — Chamado de Cthulhu 7ª Edição</p>
+            </div>
+            <div class="home-options">
+                <button id="btn-new-initiative" class="home-card">
+                    <span class="home-card-icon">🎲</span>
+                    <span class="home-card-name">Nova Iniciativa</span>
+                    <span class="home-card-desc">Adicione personagens com seus valores de DES e role a iniciativa automaticamente seguindo as regras do sistema.</span>
+                </button>
+                <button id="btn-existing-initiative" class="home-card">
+                    <span class="home-card-icon">📋</span>
+                    <span class="home-card-name">Iniciativa Existente</span>
+                    <span class="home-card-desc">Insira manualmente a ordem de iniciativa já definida e gerencie o combate.</span>
+                </button>
+            </div>
+            <div class="home-footer">
+                <button id="btn-instructions-home" class="btn btn-secondary btn-small">📖 Instruções</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== TELA DE INICIATIVA (NOVA) ===== -->
+    <div id="screen-new-init" class="screen">
+        <header class="app-header">
+            <div class="header-left">
+                <button class="btn btn-small btn-secondary btn-back" data-target="home">← Voltar</button>
+                <h1 class="header-logo">CthulhuTracker</h1>
+            </div>
+            <div class="header-actions">
+                <span class="mode-badge new-badge">Nova Iniciativa</span>
+                <button class="btn btn-small btn-secondary btn-instructions-top">📖 Instruções</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="section-card">
+                <div class="section-header-row">
+                    <h3 class="section-title">Personagens</h3>
+                    <button id="btn-add-char-new" class="btn btn-primary btn-small">+ Adicionar Personagem</button>
+                </div>
+                <div id="char-list-new" class="char-list"></div>
+                <div id="no-chars-new" class="empty-state-small">
+                    <p>Nenhum personagem adicionado.</p>
+                    <p>Clique em <strong>"+ Adicionar Personagem"</strong> para começar.</p>
+                </div>
+            </div>
+            <div class="action-bar">
+                <button id="btn-start-combat-new" class="btn btn-primary btn-large" disabled>🎲 Rolar Iniciativa e Iniciar Combate</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== TELA DE INICIATIVA (EXISTENTE) ===== -->
+    <div id="screen-existing-init" class="screen">
+        <header class="app-header">
+            <div class="header-left">
+                <button class="btn btn-small btn-secondary btn-back" data-target="home">← Voltar</button>
+                <h1 class="header-logo">CthulhuTracker</h1>
+            </div>
+            <div class="header-actions">
+                <span class="mode-badge existing-badge">Iniciativa Existente</span>
+                <button class="btn btn-small btn-secondary btn-instructions-top">📖 Instruções</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="section-card">
+                <div class="section-header-row">
+                    <h3 class="section-title">Personagens</h3>
+                    <button id="btn-add-char-existing" class="btn btn-primary btn-small">+ Adicionar Personagem</button>
+                </div>
+                <div id="char-list-existing" class="char-list"></div>
+                <div id="no-chars-existing" class="empty-state-small">
+                    <p>Nenhum personagem adicionado.</p>
+                    <p>Clique em <strong>"+ Adicionar Personagem"</strong> para começar.</p>
+                </div>
+            </div>
+            <div class="action-bar">
+                <button id="btn-start-combat-existing" class="btn btn-primary btn-large" disabled>⚔️ Iniciar Combate</button>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== TELA DE COMBATE ===== -->
+    <div id="screen-combat" class="screen">
+        <header class="app-header">
+            <div class="header-left">
+                <h1 class="header-logo">CthulhuTracker</h1>
+            </div>
+            <div class="header-actions">
+                <span id="combat-mode-badge" class="mode-badge"></span>
+                <button class="btn btn-small btn-secondary btn-instructions-top">📖 Instruções</button>
+                <button id="btn-end-combat" class="btn btn-small btn-danger">🏁 Finalizar Combate</button>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Painel de Rodada -->
+            <div class="round-panel">
+                <div class="round-info">
+                    <span class="round-label">Rodada</span>
+                    <span id="round-number" class="round-number">1</span>
+                </div>
+                <div class="turn-info">
+                    <span class="turn-label">Vez de</span>
+                    <span id="current-turn-name" class="turn-name">—</span>
+                </div>
+                <button id="btn-next-turn" class="btn btn-primary">Próximo Personagem →</button>
+            </div>
+
+            <!-- Resultados da Rolagem (só para Nova Iniciativa) -->
+            <div id="roll-results-section" class="section-card" style="display:none">
+                <h3 class="section-title">Resultados da Rolagem</h3>
+                <div id="roll-results-list" class="roll-results-list"></div>
+            </div>
+
+            <!-- Lista de Ordem -->
+            <div class="section-card">
+                <h3 class="section-title">Ordem de Iniciativa</h3>
+                <div id="combat-order-list" class="combat-order-list"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ===== MODAL DE INSTRUÇÕES ===== -->
+    <div id="instructions-overlay" class="modal-overlay">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2 id="modal-title" class="modal-title"></h2>
+                <button id="modal-close" class="modal-close-btn" title="Fechar">✕</button>
+            </div>
+            <div id="modal-body" class="modal-body"></div>
+            <div class="modal-footer">
+                <div class="modal-dots" id="modal-dots"></div>
+                <div class="modal-nav-buttons">
+                    <button id="modal-prev" class="btn btn-secondary btn-small">← Anterior</button>
+                    <button id="modal-next" class="btn btn-primary btn-small">Próximo →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL DE CONFIRMAÇÃO ===== -->
+    <div id="confirm-overlay" class="modal-overlay">
+        <div class="modal-container modal-small">
+            <div class="modal-header">
+                <h2 class="modal-title">⚠️ Finalizar Combate</h2>
+                <button id="confirm-close" class="modal-close-btn" title="Fechar">✕</button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja finalizar o combate?</p>
+                <p>Todas as informações da iniciativa atual serão perdidas e o rastreador será reiniciado.</p>
+            </div>
+            <div class="modal-footer confirm-footer">
+                <button id="confirm-cancel" class="btn btn-secondary">Cancelar</button>
+                <button id="confirm-end" class="btn btn-danger">Finalizar Combate</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/instructions.js"></script>
+    <script src="js/initiative.js"></script>
+    <script src="js/combat.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
