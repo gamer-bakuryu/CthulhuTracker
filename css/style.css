@@ -165,6 +165,13 @@ body {
     margin-top: 2rem;
 }
 
+.home-footer-buttons {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 /* ===== HEADER ===== */
 .app-header {
     display: flex;
@@ -295,6 +302,34 @@ body {
     padding: 0.3rem 0.5rem;
     font-size: 0.85rem;
     min-width: 32px;
+}
+
+/* ===== BOTÃO CALLKEEPER ===== */
+.btn-callkeeper {
+    background: transparent;
+    color: var(--accent-green-bright);
+    border-color: var(--accent-green);
+}
+
+.btn-callkeeper:hover {
+    background: rgba(74, 124, 92, 0.15);
+    border-color: var(--accent-green-bright);
+    color: var(--accent-green-bright);
+    box-shadow: 0 0 12px rgba(111, 191, 133, 0.2);
+}
+
+/* ===== BOTÃO DE APOIO ===== */
+.btn-support {
+    background: transparent;
+    color: var(--accent-gold);
+    border-color: var(--accent-gold-dim);
+}
+
+.btn-support:hover {
+    background: rgba(196, 169, 106, 0.1);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+    box-shadow: 0 0 12px rgba(196, 169, 106, 0.15);
 }
 
 /* ===== FORMULÁRIOS ===== */
@@ -821,6 +856,58 @@ input[type="number"] {
     gap: 0.5rem;
 }
 
+/* ===== MODAL DE APOIO / PIX ===== */
+.support-modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.support-text {
+    margin-bottom: 1.25rem;
+}
+
+.support-text p {
+    margin-bottom: 0.6rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.support-qr-container {
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    padding: 1rem;
+    margin: 0.5rem 0 1.25rem 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.support-qr-image {
+    width: 220px;
+    height: 220px;
+    display: block;
+    image-rendering: pixelated;
+}
+
+.support-thanks {
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-dark);
+    width: 100%;
+}
+
+.support-thanks p {
+    margin-bottom: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.support-thanks em {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--bg-dark); }
@@ -840,6 +927,8 @@ input[type="number"] {
     .char-entry { flex-wrap: wrap; }
     .modal-footer { flex-direction: column; gap: 0.75rem; }
     .roll-result-entry { flex-wrap: wrap; }
+    .home-footer-buttons { flex-direction: column; align-items: center; }
+    .support-qr-image { width: 180px; height: 180px; }
 }
 
 @media (max-width: 480px) {
@@ -847,4 +936,5 @@ input[type="number"] {
     .home-card { padding: 1rem; }
     .modal-body { padding: 1rem; }
     .section-card { padding: 1rem; }
+    .support-qr-image { width: 160px; height: 160px; }
 }
