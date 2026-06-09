@@ -28,7 +28,11 @@
                 </button>
             </div>
             <div class="home-footer">
-                <button id="btn-instructions-home" class="btn btn-secondary btn-small">📖 Instruções</button>
+                <div class="home-footer-buttons">
+                    <button id="btn-instructions-home" class="btn btn-secondary btn-small">📖 Instruções</button>
+                    <a href="https://gamer-bakuryu.github.io/CallKeeper/" target="_blank" class="btn btn-small btn-callkeeper">📜 CallKeeper</a>
+                    <button id="btn-support-home" class="btn btn-small btn-support">☕ Apoiar</button>
+                </div>
             </div>
         </div>
     </div>
@@ -42,6 +46,8 @@
             </div>
             <div class="header-actions">
                 <span class="mode-badge new-badge">Nova Iniciativa</span>
+                <a href="https://gamer-bakuryu.github.io/CallKeeper/" target="_blank" class="btn btn-small btn-callkeeper">📜 CallKeeper</a>
+                <button class="btn btn-small btn-support btn-support-top">☕ Apoiar</button>
                 <button class="btn btn-small btn-secondary btn-instructions-top">📖 Instruções</button>
             </div>
         </header>
@@ -73,6 +79,8 @@
             </div>
             <div class="header-actions">
                 <span class="mode-badge existing-badge">Iniciativa Existente</span>
+                <a href="https://gamer-bakuryu.github.io/CallKeeper/" target="_blank" class="btn btn-small btn-callkeeper">📜 CallKeeper</a>
+                <button class="btn btn-small btn-support btn-support-top">☕ Apoiar</button>
                 <button class="btn btn-small btn-secondary btn-instructions-top">📖 Instruções</button>
             </div>
         </header>
@@ -103,13 +111,14 @@
             </div>
             <div class="header-actions">
                 <span id="combat-mode-badge" class="mode-badge"></span>
+                <a href="https://gamer-bakuryu.github.io/CallKeeper/" target="_blank" class="btn btn-small btn-callkeeper">📜 CallKeeper</a>
+                <button class="btn btn-small btn-support btn-support-top">☕ Apoiar</button>
                 <button class="btn btn-small btn-secondary btn-instructions-top">📖 Instruções</button>
                 <button id="btn-end-combat" class="btn btn-small btn-danger">🏁 Finalizar Combate</button>
             </div>
         </header>
 
         <main class="main-content">
-            <!-- Painel de Rodada -->
             <div class="round-panel">
                 <div class="round-info">
                     <span class="round-label">Rodada</span>
@@ -122,13 +131,11 @@
                 <button id="btn-next-turn" class="btn btn-primary">Próximo Personagem →</button>
             </div>
 
-            <!-- Resultados da Rolagem (só para Nova Iniciativa) -->
             <div id="roll-results-section" class="section-card" style="display:none">
                 <h3 class="section-title">Resultados da Rolagem</h3>
                 <div id="roll-results-list" class="roll-results-list"></div>
             </div>
 
-            <!-- Lista de Ordem -->
             <div class="section-card">
                 <h3 class="section-title">Ordem de Iniciativa</h3>
                 <div id="combat-order-list" class="combat-order-list"></div>
@@ -168,6 +175,34 @@
             <div class="modal-footer confirm-footer">
                 <button id="confirm-cancel" class="btn btn-secondary">Cancelar</button>
                 <button id="confirm-end" class="btn btn-danger">Finalizar Combate</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== MODAL DE APOIO / PIX ===== -->
+    <div id="support-overlay" class="modal-overlay">
+        <div class="modal-container modal-small">
+            <div class="modal-header">
+                <h2 class="modal-title">☕ Apoie o CthulhuTracker</h2>
+                <button id="support-close" class="modal-close-btn" title="Fechar">✕</button>
+            </div>
+            <div class="modal-body support-modal-body">
+                <div class="support-text">
+                    <p>Obrigado por utilizar o <strong>CthulhuTracker</strong>!</p>
+                    <p>Este projeto é desenvolvido com dedicação e disponibilizado de forma totalmente gratuita
+                    para que todos possam aproveitar suas sessões de RPG da melhor forma possível.</p>
+                    <p>Se o CthulhuTracker tem sido útil para você e seus amigos, considere fazer uma contribuição
+                    voluntária via <strong>Pix</strong>. Qualquer valor ajuda a manter o projeto ativo e
+                    em constante melhoria.</p>
+                    <p>Escaneie o QR Code abaixo com o aplicativo do seu banco:</p>
+                </div>
+                <div class="support-qr-container">
+                    <img src="images/qrcode-pix.png" alt="QR Code Pix" class="support-qr-image">
+                </div>
+                <div class="support-thanks">
+                    <p>Desde já, muito obrigado pelo apoio! 🐙</p>
+                    <p><em>Que os Antigos recompensem sua generosidade... de formas menos terríveis que o habitual.</em></p>
+                </div>
             </div>
         </div>
     </div>
