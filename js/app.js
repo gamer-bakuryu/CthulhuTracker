@@ -26,6 +26,14 @@ var App = (function() {
         document.getElementById('confirm-overlay').classList.remove('active');
     }
 
+    function openSupportModal() {
+        document.getElementById('support-overlay').classList.add('active');
+    }
+
+    function closeSupportModal() {
+        document.getElementById('support-overlay').classList.remove('active');
+    }
+
     function init() {
         // ===== Navegação Home =====
         document.getElementById('btn-new-initiative').addEventListener('click', function() {
@@ -120,12 +128,36 @@ var App = (function() {
             if (e.target === this) closeConfirmModal();
         });
 
+        // ===== Apoio / Pix =====
+        document.getElementById('btn-support-home').addEventListener('click', function() {
+            openSupportModal();
+        });
+
+        document.querySelectorAll('.btn-support-top').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                openSupportModal();
+            });
+        });
+
+        document.getElementById('support-close').addEventListener('click', function() {
+            closeSupportModal();
+        });
+
+        document.getElementById('support-overlay').addEventListener('click', function(e) {
+            if (e.target === this) closeSupportModal();
+        });
+
         // ===== ESC fecha modais =====
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') {
                 var confirmOverlay = document.getElementById('confirm-overlay');
                 if (confirmOverlay.classList.contains('active')) {
                     closeConfirmModal();
+                    return;
+                }
+                var supportOverlay = document.getElementById('support-overlay');
+                if (supportOverlay.classList.contains('active')) {
+                    closeSupportModal();
                     return;
                 }
             }
